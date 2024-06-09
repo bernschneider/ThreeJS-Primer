@@ -30,7 +30,7 @@ class App{
         const textureLoader = new TextureLoader();
 
         // load a texture
-        const texture = textureLoader.load( '../ThreeJS-Primer/assets/master.png', );
+        const texture = textureLoader.load( '/ThreeJS-Primer/assets/master.png', );
         const material = new MeshStandardMaterial({ map: texture, });
 
         this.mesh = new THREE.Mesh( geometry, material );
