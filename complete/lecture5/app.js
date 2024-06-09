@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from '../../libs/three140/examples/jsm/controls/OrbitControls.js';
+import { TextureLoader, MeshStandardMaterial } from 'three';
 
 class App{
 	constructor(){
@@ -25,7 +26,12 @@ class App{
 		container.appendChild( this.renderer.domElement );
 		
         const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshStandardMaterial( { color: 0xFF0000 });
+
+        const textureLoader = new TextureLoader();
+
+        // load a texture
+        const texture = textureLoader.load( '/assets/master.png', );
+        const material = new MeshStandardMaterial({ map: texture, });
 
         this.mesh = new THREE.Mesh( geometry, material );
         
@@ -45,6 +51,7 @@ class App{
     }
     
 	render( ) {   
+        this.mesh.rotateX(0.01); 
         this.mesh.rotateY( 0.01 );
         this.renderer.render( this.scene, this.camera );
     }
